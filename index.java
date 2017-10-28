@@ -35,6 +35,7 @@ public class index extends HttpServlet
             return;
         }
          BusinessFirm b = new BusinessFirm();
+        System.out.println("HURRAAY HURRAY KJDjdfkwbvkjw" + s);
          b.fetchCustomer();
          int n = b.getCustomerNumber();
          Vector<Customer> v = b.getCustomerList();
@@ -43,7 +44,7 @@ public class index extends HttpServlet
          {
              if(v.get(i).getName().startsWith(s))
              {
-                 out.print(v.get(i).getName());
+                 out.print(v.get(i).getName() + "    fkwgjiw ");
              }
          }
 //        String[] str = {"anurag","akash","arindam","anuj"};
