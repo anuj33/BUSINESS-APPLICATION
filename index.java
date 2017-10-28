@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-@WebServlet(urlPatterns = { "/indexses" })
-public class indexses extends HttpServlet
+import java.util.*;
+@WebServlet(urlPatterns = { "/index" })
+public class index extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
-    public indexses()
+    public index()
     {
         ;;
     }
@@ -27,23 +27,31 @@ public class indexses extends HttpServlet
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+		PrintWriter out = response.getWriter();
         String s=request.getParameter("val");
         if(s==null || s.trim().equals(""))
         {
             out.print("Please enter id");
             return;
         }
-        BusinessFirm b = new BusinessFirm();
-        b.fetchCustomer();
-        int n = b.getCustomerNumber();
-        Vector<Customer> v = b.getCustomerList();
-        s.toLowerCase();
-        for (int i=0;i<n ;i++ )
-        {
-            if(v.get(i).getName().startsWith(s))
-            {
-                out.print(v.get(i).getName());
-            }
-        }
+         BusinessFirm b = new BusinessFirm();
+         b.fetchCustomer();
+         int n = b.getCustomerNumber();
+         Vector<Customer> v = b.getCustomerList();
+         s.toLowerCase();
+         for (int i=0;i<n ;i++ )
+         {
+             if(v.get(i).getName().startsWith(s))
+             {
+                 out.print(v.get(i).getName());
+             }
+         }
+//        String[] str = {"anurag","akash","arindam","anuj"};
+//        for (int i=0;i<4 ;i++ ) {
+//            if(str[i].startsWith(s))
+//            {
+//                out.print(str[i]+"<br>");
+//            }
+//        }
     }
 }
