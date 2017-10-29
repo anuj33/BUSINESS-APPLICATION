@@ -44,7 +44,7 @@ public class index extends HttpServlet
          {
              if(v.get(i).getName().startsWith(s))
              {
-                 out.print(v.get(i).getName() + "    fkwgjiw ");
+                 out.print(v.get(i).getName() + "<br>");
              }
          }
 //        String[] str = {"anurag","akash","arindam","anuj"};
