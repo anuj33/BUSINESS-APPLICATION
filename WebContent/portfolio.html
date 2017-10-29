@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>APPLICATION</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/responsive-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--<link rel="stylesheet" type-->
+    <link href="css/portfolio.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <div class="navbar-brand">
+                            <a href="index.html"><h1>BUSINESS PROJECT</h1></a>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" ><a href="index.html">HOME</a></li>
+                            <!--<li role="presentation"><a href="feature.html">Feature</a></li>-->
+                            <!-- <li role="presentation" ><a href="addcustomer.html">ADD CUSTOMER</a></li> -->
+                            <!-- <li role="presentation"><a href="addproduct.html">ADD PRODUCT</a></li> -->
+                            <li role="presentation"  class="active"><a href="portfolio.html">BILL GENERATION</a></li>
+                            <li role="presentation"><a href="contact.html">SIGN UP</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="license" href="https://www.opensource.org/licenses/mit-license/">
+    <script src="script.js"></script>
+</head>
+<body>
+<header>
+    <h1>Invoice</h1>
+    <address contenteditable>
+        <p>LNMIIT </p>
+        <p>RUPA KI NANGAL </p>
+        <p>302031</p>
+    </address>
+    <span><img alt="" src="http://www.jonathantneal.com/examples/invoice/logo.png"><input type="file" accept="image/*"></span>
+</header>
+<article>
+    <h1>Recipient</h1>
+    <address contenteditable>
+        <p>Some Company<br>c/o Some Guy</p>
+    </address>
+    <table class="meta">
+        <tr>
+            <th><span contenteditable>Invoice #</span></th>
+            <td><span contenteditable>101138</span></td>
+        </tr>
+        <tr>
+            <th><span contenteditable>Date</span></th>
+            <td><span contenteditable>OCTOBER 5, 2017</span></td>
+        </tr>
+        <tr>
+            <th><span contenteditable>Amount Due</span></th>
+            <td><span id="prefix" contenteditable>₹</span><span>00.00</span></td>
+        </tr>
+    </table>
+    <table class="inventory">
+        <thead>
+        <tr>
+            <th><span contenteditable>Item</span></th>
+            <th><span contenteditable>Description</span></th>
+            <th><span contenteditable>Rate</span></th>
+
+            <th><span contenteditable>Quantity</span></th>
+
+            <th><span contenteditable>Tax</span></th>
+            <th><span contenteditable>Total Tax</span></th>
+            <th><span contenteditable>Discount</span></th>
+            <th><span contenteditable>Total Discount</span></th>
+
+
+            <th><span contenteditable>Price</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><a class="cut">-</a><span contenteditable>Front End Consultation</span></td>
+            <td><span contenteditable>Experience Review</span></td>
+            <td><span data-prefix>₹</span><span contenteditable>000.00</span></td>
+            <td><span contenteditable>0</span></td>
+            <td><span contenteditable>0</span></td>
+            <td><span contenteditable>0</span></td>
+            <td><span contenteditable>0</span></td>
+
+            <td><span contenteditable>0</span></td>
+
+            <td><span data-prefix></span><span>000.00</span></td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="add">+</a>
+    <table class="balance">
+        <tr>
+            <th><span contenteditable>Total</span></th>
+            <td><span data-prefix>₹</span><span>000.00</span></td>
+        </tr>
+        <tr>
+            <th><span contenteditable>Amount Paid</span></th>
+            <td><span data-prefix>₹</span><span contenteditable>0.00</span></td>
+        </tr>
+        <tr>
+            <th><span contenteditable>Balance Due</span></th>
+            <td><span data-prefix>₹</span><span> 000.00</span></td>
+        </tr>
+    </table>
+</article>
+<aside>
+    <h1><span contenteditable>TERMS AND CONDITIONS</span></h1>
+    <div contenteditable>
+        <p>1)THIS IS TO CERTIFY THAT WE HAVE VALID REGISTRATION UNDER GST AND ALL ABOVE INFORMATION ARE TRUE AND CORRECT.</p>
+        <P>2)OUR GOODS ARE CLAIMLESS AND GOODS ONCE SOLD CANNOT BE TAKEN BACK.</P>
+        <p>3)OUR RESPONSIBILITY CEASES AFTER HANDING OVER THE GOODS TO TRANSPORTER.</p>
+        <p>4)SUBJECT TO JAIPUR JURISDICTION ONLY.</p>
+    </div>
+</aside>
+</body>
+</html>
+
+</footer>
+<!--end footer-->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-2.1.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="portfolio.js"></script>
+
+<script src="js/responsive-slider.js"></script>
+<script src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/fliplightbox.min.js"></script>
+<script type="text/javascript">₹('body').flipLightBox()</script>
+<script>
+    wow = new WOW(
+        {
+
+        }	)
+        .init();
+</script>
+</body>
+</html>
