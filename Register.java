@@ -117,6 +117,7 @@ public class Register
         }
         return -1;
     }
+
     int addFirm()
     {
         Authenticator obj = new Authenticator();
@@ -124,8 +125,17 @@ public class Register
         if(obj.userAlreadyExist(username)!=-1)
             return 1;
         DatabaseConnect db = new DatabaseConnect("Login");
-        // firmId = generateId();
-        firmId = 52425;
+        DatabaseConnect dbId = new DatabaseConnect("fId");
+        Iterator it = db.getIterator();
+        while (it.hasNext())
+        {
+            Utility obj = new Utility();
+            obj.breakDatabaseString(it.next().toString());
+            firmId = obj.getAttribute("firmId");
+        }
+        dbId.deleteOne(new Document("firmId",firmId));
+        Document doc = new Document("firmId",++firmId);
+        dbId.getCollection().insertOne(doc);
         Document document = new Document("firmId",firmId)
         .append("username",username)
         .append("password",password);
