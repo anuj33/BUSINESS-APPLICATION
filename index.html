@@ -5,7 +5,7 @@
             function sendInfo()
             {
                 var v=document.vinform.t1.value;
-                var url="index.jsp?val="+v;
+                var url="index.jsp?val="+v+"$$"+firmId;
                 if(window.XMLHttpRequest){
                 request=new XMLHttpRequest();
                 }
