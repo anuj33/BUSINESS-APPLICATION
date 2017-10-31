@@ -38,6 +38,19 @@ public class Transaction
         cgst = Float.valueOf(obj.getAttribute("cgst"));
         igst = Float.valueOf(obj.getAttribute("igst"));
     }
+    void addNewTransaction(Transaction newRecord)
+    {
+        DatabaseConnect db = new DatabaseConnect("transaction");
+        Document document = new Document("firmId",newRecord.getFirmId())
+        .append("invoiceNumber",newRecord.getInvoiceNumber())
+        .append("billingDate",newRecord.getBillingDate())
+        .append("totalAmt",newRecord.getTotalAmt())
+        .append("totalDiscount",newRecord.getTotalDiscount())
+        .append("sgst",newRecord.getSgst())
+        .append("cgst",newRecord.getCgst())
+        .append("igst",newRecord.getIgst());
+        db.getCollection().insertOne(document);
+    }
     int getFirmId()
     {
         return firmId;
