@@ -9,6 +9,7 @@ public class Transaction
     float totalAmt;
     float totalDiscount;
     float sgst,cgst,igst;
+    ObjectId id;
     Transaction(int firmId,String invoiceNumber,Date billingDate,float totalAmt,float totalDiscount,
         float sgst,float cgst,float igst)
     {
@@ -38,7 +39,7 @@ public class Transaction
         cgst = Float.valueOf(obj.getAttribute("cgst"));
         igst = Float.valueOf(obj.getAttribute("igst"));
     }
-    void addNewTransaction(Transaction newRecord)
+    void addNewTransaction()
     {
         DatabaseConnect db = new DatabaseConnect("transaction");
         Document document = new Document("firmId",newRecord.getFirmId())
@@ -50,6 +51,7 @@ public class Transaction
         .append("cgst",newRecord.getCgst())
         .append("igst",newRecord.getIgst());
         db.getCollection().insertOne(document);
+        ObjectId id = (ObjectId)document.get( "_id" );
     }
     int getFirmId()
     {
@@ -82,5 +84,9 @@ public class Transaction
     float getIgst()
     {
         return igst;
+    }
+    ObjectId getTransactionId()
+    {
+        return id;
     }
 }
