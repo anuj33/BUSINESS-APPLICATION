@@ -137,6 +137,7 @@ public class Register
         Document doc = new Document("firmId",++firmId);
         dbId.getCollection().insertOne(doc);
         Document document = new Document("firmId",firmId)
+        .append("firmName",firmName)
         .append("username",username)
         .append("password",password);
         db.getCollection().insertOne(document);
