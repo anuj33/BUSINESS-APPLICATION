@@ -57,4 +57,12 @@ public class BusinessFirm
     {
         return buyer;
     }
+    int getTransactionNumber()
+    {
+        return numberOfBuyer;
+    }
+    Vector<Transaction> getTransactionList()
+    {
+        return record;
+    }
 }
