@@ -81,4 +81,41 @@ public class Utility
             return mapping.get(key);
         return null;
     }
+    public static int getMonth(String month)
+    {
+      HashMap<String,Integer> monthList = new HashMap<String,Integer>();
+      monthList.put("jan",1);
+      monthList.put("feb",2);
+      monthList.put("mar",3);
+      monthList.put("apr",4);
+      monthList.put("may",5);
+      monthList.put("jun",6);
+      monthList.put("jul",7);
+      monthList.put("aug",8);
+      monthList.put("sep",9);
+      monthList.put("oct",10);
+      monthList.put("nov",11);
+      monthList.put("dec",12);
+      month = removeExcessSpace(month);
+      month = month.toLowerCase();
+      if(monthList.containsKey(month))
+        return monthList.get(month);
+      return 0;
+    }
+    public static int getDay(String day)
+    {
+      HashMap<String,Integer> dayList = new HashMap<String,Integer>();
+      dayList.put("mon",1);
+      dayList.put("tue",2);
+      dayList.put("wed",3);
+      dayList.put("thu",4);
+      dayList.put("fri",5);
+      dayList.put("sat",6);
+      dayList.put("sun",7);
+      day = removeExcessSpace(day);
+      day = day.toLowerCase();
+      if(dayList.containsKey(day))
+        return dayList.get(day);
+      return 0;
+    }
 }
