@@ -84,18 +84,18 @@ public class Utility
     public static int getMonth(String month)
     {
       HashMap<String,Integer> monthList = new HashMap<String,Integer>();
-      monthList.put("jan",1);
-      monthList.put("feb",2);
-      monthList.put("mar",3);
-      monthList.put("apr",4);
-      monthList.put("may",5);
-      monthList.put("jun",6);
-      monthList.put("jul",7);
-      monthList.put("aug",8);
-      monthList.put("sep",9);
-      monthList.put("oct",10);
-      monthList.put("nov",11);
-      monthList.put("dec",12);
+      monthList.put("jan",0);
+      monthList.put("feb",1);
+      monthList.put("mar",2);
+      monthList.put("apr",3);
+      monthList.put("may",4);
+      monthList.put("jun",5);
+      monthList.put("jul",6);
+      monthList.put("aug",7);
+      monthList.put("sep",8);
+      monthList.put("oct",9);
+      monthList.put("nov",10);
+      monthList.put("dec",11);
       month = removeExcessSpace(month);
       month = month.toLowerCase();
       if(monthList.containsKey(month))
