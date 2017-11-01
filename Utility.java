@@ -118,4 +118,25 @@ public class Utility
         return dayList.get(day);
       return 0;
     }
+    public static int getNumberOfDays(int month,int year)
+    {
+      if(year%4 == 0 && month == 2)
+        return 29;
+      HashMap<Integer,Integer> dayNum = new HashMap<Integer,Integer>();
+      dayNum.put(1,31);
+      dayNum.put(2,28);
+      dayNum.put(3,31);
+      dayNum.put(4,30);
+      dayNum.put(5,31);
+      dayNum.put(6,30);
+      dayNum.put(7,31);
+      dayNum.put(8,31);
+      dayNum.put(9,30);
+      dayNum.put(10,31);
+      dayNum.put(11,30);
+      dayNum.put(12,31);
+      if(dayNum.containsKey(month))
+        return dayNum.get(month);
+      return 0;
+    }
 }
