@@ -36,6 +36,22 @@ public class BusinessFirm
             numberOfRecords++;
         }
     }
+    void fetchTransaction(int firmId)
+    {
+        DatabaseConnect db = new DatabaseConnect("transaction");
+        Iterator it = db.getIterator();
+        while (it.hasNext())
+        {
+            Utility obj = new Utility();
+            obj.breakDatabaseString(it.next().toString());
+            Transaction curr = new Transaction(obj);
+            if(curr.getFirmId() == firmId)
+            {
+                record.add(curr);
+                numberOfRecords++;
+            }
+        }
+    }
     void fetchCustomer()
     {
         DatabaseConnect db = new DatabaseConnect("Customer");
@@ -59,7 +75,7 @@ public class BusinessFirm
     }
     int getTransactionNumber()
     {
-        return numberOfBuyer;
+        return numberOfRecords;
     }
     Vector<Transaction> getTransactionList()
     {
