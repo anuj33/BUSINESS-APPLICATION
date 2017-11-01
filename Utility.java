@@ -23,7 +23,7 @@ public class Utility
     }
     public static String[] breakTheSentence(String sentence,char delimeter)
     {
-       char temp[] = new char[40];
+       char temp[] = new char[400];
        String words[] = new String[100];
        int numberOfWords=0;
        int k=0,i;
@@ -61,6 +61,19 @@ public class Utility
             String keyValue[] = breakTheSentence(pairs[i],'=');
             mapping.put(removeExcessSpace(keyValue[0]),removeExcessSpace(keyValue[1]));
         }
+    }
+    public void dateHandeler(String date)
+    {
+        String pairs[] = breakTheSentence(date,' ');
+        String time[] = breakTheSentence(removeExcessSpace(pairs[3]),':');
+        mapping.put("day",pairs[0]);
+        mapping.put("month",pairs[1]);
+        mapping.put("date",pairs[2]);
+        mapping.put("hour",time[0]);
+        mapping.put("minute",time[1]);
+        mapping.put("second",time[2]);
+        mapping.put("timezone",pairs[4]);
+        mapping.put("year",pairs[5]);
     }
     public String getAttribute(String key)
     {
