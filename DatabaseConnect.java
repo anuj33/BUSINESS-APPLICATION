@@ -15,13 +15,13 @@ import com.mongodb.util.JSON;
 import java.io.IOException;
 import java.util.*;
 import java.util.Iterator;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.ServletException;
+// import javax.servlet.annotation.WebServlet;
+// import javax.servlet.http.Cookie;
+// import javax.servlet.http.HttpServlet;
+// import javax.servlet.http.HttpServletRequest;
+// import javax.servlet.http.HttpServletResponse;
+// import javax.servlet.http.HttpSession;
+// import javax.servlet.ServletException;
 import org.bson.Document;
 public class DatabaseConnect
 {
@@ -30,28 +30,36 @@ public class DatabaseConnect
     MongoCollection<Document> collection;
     FindIterable<Document> iterDoc;
     Iterator it;
+    MongoClientURI uri;
     DatabaseConnect(String collName)
     {
         // Creating a Mongo client
         // String textUri = "mongodb://"+username+":"+password+"@"+host+":"+port;
-        String textUri = "mongodb://pareekakash:qwerty@ds161304.mlab.com:61304/businessfirm";
-        //MongoClientURI uri = new MongoClientURI(textUri);
-        //mongo = new MongoClient(uri);
-         mongo = new MongoClient( "localhost" , 27017 );
+        boolean localhost = true;
+        if(!localhost)
+        {
+            String textUri = "mongodb://pareekakash:qwerty@ds161304.mlab.com:61304/businessfirm";
+            uri = new MongoClientURI(textUri);
+            mongo = new MongoClient(uri);
+            database = mongo.getDatabase("businessfirm");
+        }
+        else
+        {
+            mongo = new MongoClient( "localhost" , 27017 );
+            database = mongo.getDatabase("BusinessFirm");
+        }
         System.out.println("Connected to the database successfully");
         // Accessing the database
-        //MongoDatabase database = mongo.getDatabase("businessfirm");
-        MongoDatabase database = mongo.getDatabase("BusinessFirm");
         // Retrieving a collection
         collection = database.getCollection(collName);
         System.out.println("Collection sampleCollection selected successfully");
 
         // Getting the iterable object
         iterDoc = collection.find();
-        System.out.print("HUVDGsvfgsqvq\n\n");
+        System.out.print("Before Iterator\n\n");
         // Getting the iterator
         it = iterDoc.iterator();
-        System.out.print("SYSTEM IS CONNECTED NOW AAAAAAAAAAA\n");
+        System.out.print("SYSTEM IS CONNECTED NOW FULLLLLLLY\n");
     }
     public MongoClient getClient()
     {
