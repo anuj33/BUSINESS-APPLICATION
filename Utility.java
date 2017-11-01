@@ -139,4 +139,33 @@ public class Utility
         return dayNum.get(month);
       return 0;
     }
+    public static String getMonthInString(int month)
+    {
+      HashMap<Integer,String> monthList = new HashMap<Integer,String>();
+      monthList.put(0,"jan");
+      monthList.put(1,"feb");
+      monthList.put(2,"mar");
+      monthList.put(3,"apr");
+      monthList.put(4,"may");
+      monthList.put(5,"jun");
+      monthList.put(6,"jul");
+      monthList.put(7,"aug");
+      monthList.put(8,"sep");
+      monthList.put(9,"oct");
+      monthList.put(10,"nov");
+      monthList.put(11,"dec");
+      if(monthList.containsKey(month))
+        return monthList.get(month);
+      return null;
+    }
+    public static double getVectorMax(Vector<Double> vec)
+    {
+        double maxVector = vec.get(0);
+        for (int i = 1;i < vec.size() ;i++ )
+        {
+            if(maxVector < vec.get(i))
+                maxVector = vec.get(i);
+        }
+        return maxVector;
+    }
 }
