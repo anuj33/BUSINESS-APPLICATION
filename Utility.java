@@ -123,18 +123,18 @@ public class Utility
       if(year%4 == 0 && month == 2)
         return 29;
       HashMap<Integer,Integer> dayNum = new HashMap<Integer,Integer>();
-      dayNum.put(1,31);
-      dayNum.put(2,28);
-      dayNum.put(3,31);
-      dayNum.put(4,30);
-      dayNum.put(5,31);
-      dayNum.put(6,30);
+      dayNum.put(0,31);
+      dayNum.put(1,28);
+      dayNum.put(2,31);
+      dayNum.put(3,30);
+      dayNum.put(4,31);
+      dayNum.put(5,30);
+      dayNum.put(6,31);
       dayNum.put(7,31);
-      dayNum.put(8,31);
-      dayNum.put(9,30);
-      dayNum.put(10,31);
-      dayNum.put(11,30);
-      dayNum.put(12,31);
+      dayNum.put(8,30);
+      dayNum.put(9,31);
+      dayNum.put(10,30);
+      dayNum.put(11,31);
       if(dayNum.containsKey(month))
         return dayNum.get(month);
       return 0;
