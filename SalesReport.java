@@ -98,6 +98,28 @@ public class SalesReport
         calendar.set(year, month, Utility.getNumberOfDays(month,year), 23, 59, 59);
         return calendar.getTime();
     }
+    Date getStartOfYear(Date date)
+    {
+        Utility dateExtractor = new Utility();
+        dateExtractor.dateHandeler(date.toString());
+        int year = Integer.parseInt(dateExtractor.getAttribute("year"));
+        int month = 0;
+        int currDate = 1;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, currDate, 0, 0, 0);
+        return calendar.getTime();
+    }
+    Date getEndOfYear(Date date)
+    {
+        Utility dateExtractor = new Utility();
+        dateExtractor.dateHandeler(date.toString());
+        int year = Integer.parseInt(dateExtractor.getAttribute("year"));
+        int month = 11;
+        int currDate = 31;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, currDate, 23, 59, 59);
+        return calendar.getTime();
+    }
     Date getStartOfWeek(Date date)
     {
         Utility dateExtractor = new Utility();
