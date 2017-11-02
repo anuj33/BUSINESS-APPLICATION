@@ -132,7 +132,7 @@ public class SalesReport
         dateExtractor.dateHandeler(date.toString());
         year = Integer.parseInt(dateExtractor.getAttribute("year"));
         month = Utility.getMonth(dateExtractor.getAttribute("month"));
-        currDate = Utility.getMonth(dateExtractor.getAttribute("date"));
+        int currDate = Utility.getMonth(dateExtractor.getAttribute("date"));
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, currDate, 0, 0, 0);
         return calendar.getTime();
@@ -149,7 +149,7 @@ public class SalesReport
         dateExtractor.dateHandeler(date.toString());
         year = Integer.parseInt(dateExtractor.getAttribute("year"));
         month = Utility.getMonth(dateExtractor.getAttribute("month"));
-        currDate = Utility.getMonth(dateExtractor.getAttribute("date"));
+        int currDate = Utility.getMonth(dateExtractor.getAttribute("date"));
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, Utility.getNumberOfDays(month,year), 23, 59, 59);
         return calendar.getTime();
@@ -361,6 +361,7 @@ public class SalesReport
     }
     void createXAxis()
     {
+        String xAxisStr = null;
         for(int i = 0;i < transactionAmount.size();i++)
         {
             Date mean = new Date((startBucket.get(i).getTime() + endBucket.get(i).getTime())/2);
@@ -371,15 +372,15 @@ public class SalesReport
             switch(type)
             {
                 case 0:
-                    String xAxisStr = "week" + ":" + i+1;
+                    xAxisStr = "week" + ":" + (i+1);
                     xAxis.add(xAxisStr);
                 break;
                 case 1:
-                    String xAxisStr = Utility.getMonthInString(month) + (year%100);
+                    xAxisStr = Utility.getMonthInString(month) + (year%100);
                     xAxis.add(xAxisStr);
                 break;
                 case 2:
-                    String xAxisStr = "year " + year;
+                    xAxisStr = "year " + year;
                     xAxis.add(xAxisStr);
                 break;
             }
