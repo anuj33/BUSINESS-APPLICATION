@@ -108,10 +108,10 @@ public class SalesReport
         int hour = Integer.parseInt(dateExtractor.getAttribute("hour"));
         int minute = Integer.parseInt(dateExtractor.getAttribute("minute"));
         int second = Integer.parseInt(dateExtractor.getAttribute("second"));
-        if(month == 1)
+        if(month == 0)
         {
             year--;
-            month = 12;
+            month = 11;
         }
         else
             month--;
@@ -184,11 +184,40 @@ public class SalesReport
     {
         return transactionAmount;
     }
-    // Vector<String> getXAxis()
-    // {
-    //     for(int i = 0;i < transactionAmount.size();i++)
-    //     {
-    //         xAxis.add();
-    //     }
-    // }
+    void createXAxis()
+    {
+        for(int i = 0;i < transactionAmount.size();i++)
+        {
+            Date mean = new Date((startBucket.get(i).getTime() + endBucket.get(i).getTime())/2);
+            Utility dateExtractor = new Utility();
+            dateExtractor.dateHandeler(mean.toString());
+            int year = Integer.parseInt(dateExtractor.getAttribute("year"));
+            int month = Utility.getMonth(dateExtractor.getAttribute("month"));
+            String monthStr = Utility.getMonthInString(month) + (year%100);
+            xAxis.add(monthStr);
+        }
+    }
+    void createYAxis()
+    {
+        double high = Utility.getVectorMax(transactionAmount);
+        double low = 0;
+        if(high == low)
+        {
+            yAxis.add(Double.toString(0.0));
+            return;
+        }
+        for (int i = 0;i < 10 ; i++)
+        {
+            yAxis.add(Double.toString(low));
+            low = low + high/10.0;
+        }
+    }
+    Vector<String> getXAxis()
+    {
+        return xAxis;
+    }
+    Vector<String> getYAxis()
+    {
+        return yAxis;
+    }
 }
