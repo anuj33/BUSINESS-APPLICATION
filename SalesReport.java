@@ -98,6 +98,40 @@ public class SalesReport
         calendar.set(year, month, Utility.getNumberOfDays(month,year), 23, 59, 59);
         return calendar.getTime();
     }
+    Date getStartOfWeek(Date date)
+    {
+        Utility dateExtractor = new Utility();
+        dateExtractor.dateHandeler(date.toString());
+        int year = Integer.parseInt(dateExtractor.getAttribute("year"));
+        int month = Utility.getMonth(dateExtractor.getAttribute("month"));
+        int day = Utility.getMonth(dateExtractor.getAttribute("day"));
+        date = decrementDate(date,--day);
+        dateExtractor = new Utility();
+        dateExtractor.dateHandeler(date.toString());
+        year = Integer.parseInt(dateExtractor.getAttribute("year"));
+        month = Utility.getMonth(dateExtractor.getAttribute("month"));
+        currDate = Utility.getMonth(dateExtractor.getAttribute("date"));
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, currDate, 0, 0, 0);
+        return calendar.getTime();
+    }
+    Date getEndOfWeek(Date date)
+    {
+        Utility dateExtractor = new Utility();
+        dateExtractor.dateHandeler(date.toString());
+        int year = Integer.parseInt(dateExtractor.getAttribute("year"));
+        int month = Utility.getMonth(dateExtractor.getAttribute("month"));
+        int day = Utility.getMonth(dateExtractor.getAttribute("day"));
+        date = incrementDate(date,7 - day);
+        dateExtractor = new Utility();
+        dateExtractor.dateHandeler(date.toString());
+        year = Integer.parseInt(dateExtractor.getAttribute("year"));
+        month = Utility.getMonth(dateExtractor.getAttribute("month"));
+        currDate = Utility.getMonth(dateExtractor.getAttribute("date"));
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, Utility.getNumberOfDays(month,year), 23, 59, 59);
+        return calendar.getTime();
+    }
     Date decrementMonth(Date date)
     {
         Utility dateExtractor = new Utility();
@@ -133,7 +167,7 @@ public class SalesReport
         int hour = Integer.parseInt(dateExtractor.getAttribute("hour"));
         int minute = Integer.parseInt(dateExtractor.getAttribute("minute"));
         int second = Integer.parseInt(dateExtractor.getAttribute("second"));
-        while(numOfDays--)
+        while(numOfDays > 0)
         {
             if(currDate == 1)
             {
@@ -148,11 +182,45 @@ public class SalesReport
             }
             else
                 currDate--;
+            numOfDays--;
         }
         System.out.println("In decrement Date "+month);
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, currDate, hour, minute, second);
         System.out.println("IN decrement date Calendar"+calendar.getTime());
+        return calendar.getTime();
+    }
+    Date incrementDate(Date date,int numOfDays)
+    {
+        Utility dateExtractor = new Utility();
+        dateExtractor.dateHandeler(date.toString());
+        int year = Integer.parseInt(dateExtractor.getAttribute("year"));
+        int month = Utility.getMonth(dateExtractor.getAttribute("month"));
+        int currDate = Integer.parseInt(dateExtractor.getAttribute("date"));
+        int hour = Integer.parseInt(dateExtractor.getAttribute("hour"));
+        int minute = Integer.parseInt(dateExtractor.getAttribute("minute"));
+        int second = Integer.parseInt(dateExtractor.getAttribute("second"));
+        while(numOfDays > 0)
+        {
+            if(currDate == Utility.getNumberOfDays(month, year))
+            {
+                if(month == 11)
+                {
+                    year++;
+                    month = 0;
+                }
+                else
+                    month++;
+                currDate = 1;
+            }
+            else
+                currDate++;
+            numOfDays--;
+        }
+        System.out.println("In Increment Date "+month);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, currDate, hour, minute, second);
+        System.out.println("IN Increment date Calendar"+calendar.getTime());
         return calendar.getTime();
     }
     void createReport()
