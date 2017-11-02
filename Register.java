@@ -120,9 +120,9 @@ public class Register
 
     int addFirm()
     {
-        Authenticator obj = new Authenticator();
+        Authenticator ob = new Authenticator();
         System.out.println("\n\nIn Register \n\n\n");
-        if(obj.userAlreadyExist(username)!=-1)
+        if(ob.userAlreadyExist(username)!=-1)
             return 1;
         DatabaseConnect db = new DatabaseConnect("Login");
         DatabaseConnect dbId = new DatabaseConnect("fId");
@@ -131,9 +131,9 @@ public class Register
         {
             Utility obj = new Utility();
             obj.breakDatabaseString(it.next().toString());
-            firmId = obj.getAttribute("firmId");
+            firmId = Integer.parseInt(obj.getAttribute("firmId"));
         }
-        dbId.deleteOne(new Document("firmId",firmId));
+        //dbId.deleteOne(new Document("firmId",firmId));
         Document doc = new Document("firmId",++firmId);
         dbId.getCollection().insertOne(doc);
         Document document = new Document("firmId",firmId)

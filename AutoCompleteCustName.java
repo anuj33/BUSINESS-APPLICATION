@@ -45,7 +45,7 @@ public class AutoCompleteCustName extends HttpServlet
          s.toLowerCase();
          for (int i=0;i<n ;i++ )
          {
-             if(v.get(i).getFirmId()==firmId && v.get(i).getName().startsWith(s))
+             if(  v.get(i).getName().startsWith(s))
              {
                  out.print(v.get(i).getName() + ":");
              }

@@ -35,7 +35,7 @@ public class DatabaseConnect
     {
         // Creating a Mongo client
         // String textUri = "mongodb://"+username+":"+password+"@"+host+":"+port;
-        boolean localhost = true;
+        boolean localhost = false;
         if(!localhost)
         {
             String textUri = "mongodb://pareekakash:qwerty@ds161304.mlab.com:61304/businessfirm";

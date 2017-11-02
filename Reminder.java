@@ -48,6 +48,7 @@ public class Reminder {
         {
             Utility obj = new Utility();
             obj.breakDatabaseString(it.next().toString());
+            System.out.println(obj.getAttribute("_id"));
             int currFirmId = Integer.parseInt(obj.getAttribute("firmId"));
             String subject = (obj.getAttribute("subject"));
             String temp = (obj.getAttribute("reminderDate"));

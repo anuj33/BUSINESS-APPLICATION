@@ -9,10 +9,12 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.ServerAddress;
 import com.mongodb.DBCursor;
 import java.util.Iterator;
+import java.lang.Object;
+import org.bson.types.ObjectId;
 
 public class ProductSale
 {
-    ObjectId id;
+    String id;
     String name;
     float rate;
     float qty;
@@ -21,7 +23,7 @@ public class ProductSale
     float discRate;
     float totalDiscount;
     float totalPrice;
-    ProductSale(ObjectId id,String name,float rate,float qty,float taxSlab,float taxSlab,float totalTax,float discRate,
+    ProductSale(String id,String name,float rate,float qty,float taxSlab,float totalTax,float discRate,
         float totalDiscount,float totalPrice)
     {
         this.id = id;
@@ -36,7 +38,7 @@ public class ProductSale
     }
     ProductSale(Utility obj)
     {
-        id = (ObjectId) obj.getAttribute("transactionId");
+        id = obj.getAttribute("transactionId");
         name = obj.getAttribute("name");
         rate = Float.valueOf(obj.getAttribute("rate"));
         qty = Float.valueOf(obj.getAttribute("qty"));
@@ -55,12 +57,12 @@ public class ProductSale
         .append("qty",qty)
         .append("taxSlab",taxSlab)
         .append("totalTax",totalTax)
-        .append("discRate",discRate);
-        .append("totalDiscount",totalDiscount);
+        .append("discRate",discRate)
+        .append("totalDiscount",totalDiscount)
         .append("totalPrice",totalPrice);
         db.getCollection().insertOne(document);
     }
-    ObjectId getTransactionId()
+    String getTransactionId()
     {
         return id;
     }

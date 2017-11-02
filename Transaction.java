@@ -50,12 +50,10 @@ public class Transaction
         firmId = Integer.parseInt(obj.getAttribute("firmId"));
         invoiceNumber = Integer.parseInt(obj.getAttribute("invoiceNumber"));
         String temp = obj.getAttribute("billingDate");
-        System.out.println(temp);
         try
         {
             SimpleDateFormat ft = new SimpleDateFormat ("EEE MMM dd HH:mm:ss zzz yyyy");
             billingDate = ft.parse(temp);
-            System.out.println(billingDate);
         }
         catch(Exception e){}
         totalAmt = Float.valueOf(obj.getAttribute("totalAmt"));

@@ -4,7 +4,7 @@ public class Utility
     HashMap<String , String> mapping = new HashMap<String , String>();
     public static String removeExcessSpace(String str)
     {
-        System.out.println("remove space "+str);
+        // System.out.println("remove space "+str);
         if(str.length() == 0 || str.equals(""))
           return null;
         int start = 0 ,end = str.length() - 1;
@@ -55,13 +55,13 @@ public class Utility
     {
         int start = str.lastIndexOf('{',str.length());
         int end = str.indexOf('}',0);
-        System.out.println(start + "  " + end);
+        // System.out.println(start + "  " + end);
         str = str.substring(start+1,end);
-        System.out.println(str);
+        // System.out.println(str);
         String pairs[] = breakTheSentence(str,',');
         for (int i=0;i < pairs.length ;i++)
         {
-            System.out.println("pairs i "+pairs[i]);
+            // System.out.println("pairs i "+pairs[i]);
             String keyValue[] = breakTheSentence(pairs[i],'=');
             mapping.put(removeExcessSpace(keyValue[0]),removeExcessSpace(keyValue[1]));
         }
