@@ -368,8 +368,21 @@ public class SalesReport
             dateExtractor.dateHandeler(mean.toString());
             int year = Integer.parseInt(dateExtractor.getAttribute("year"));
             int month = Utility.getMonth(dateExtractor.getAttribute("month"));
-            String monthStr = Utility.getMonthInString(month) + (year%100);
-            xAxis.add(monthStr);
+            switch(type)
+            {
+                case 0:
+                    String xAxisStr = "week" + ":" + i+1;
+                    xAxis.add(xAxisStr);
+                break;
+                case 1:
+                    String xAxisStr = Utility.getMonthInString(month) + (year%100);
+                    xAxis.add(xAxisStr);
+                break;
+                case 2:
+                    String xAxisStr = "year " + year;
+                    xAxis.add(xAxisStr);
+                break;
+            }
         }
     }
     void createYAxis()
