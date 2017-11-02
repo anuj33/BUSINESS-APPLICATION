@@ -123,6 +123,38 @@ public class SalesReport
         System.out.println("IN Calendar"+calendar.getTime());
         return calendar.getTime();
     }
+    Date decrementDate(Date date,int numOfDays)
+    {
+        Utility dateExtractor = new Utility();
+        dateExtractor.dateHandeler(date.toString());
+        int year = Integer.parseInt(dateExtractor.getAttribute("year"));
+        int month = Utility.getMonth(dateExtractor.getAttribute("month"));
+        int currDate = Integer.parseInt(dateExtractor.getAttribute("date"));
+        int hour = Integer.parseInt(dateExtractor.getAttribute("hour"));
+        int minute = Integer.parseInt(dateExtractor.getAttribute("minute"));
+        int second = Integer.parseInt(dateExtractor.getAttribute("second"));
+        while(numOfDays--)
+        {
+            if(currDate == 1)
+            {
+                if(month == 0)
+                {
+                    year--;
+                    month = 11;
+                }
+                else
+                    month--;
+                currDate = Utility.getNumberOfDays(month, year);
+            }
+            else
+                currDate--;
+        }
+        System.out.println("In decrement Date "+month);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, currDate, hour, minute, second);
+        System.out.println("IN decrement date Calendar"+calendar.getTime());
+        return calendar.getTime();
+    }
     void createReport()
     {
         System.out.println("start date end date"+startDate + " " + endDate);
