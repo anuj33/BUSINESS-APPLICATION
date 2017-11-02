@@ -152,8 +152,11 @@ public class SalesReport
         }
         Date a = getStartOfMonth(date);
         Date b = getEndOfMonth(date);
-        startBucket.add(a);
-        endBucket.add(b);
+        if(startDate.after(a) && startDate.before(b))
+        {
+            startBucket.add(a);
+            endBucket.add(b);
+        }
         if(endBucket.get(0).after(endDate))
             endBucket.set(0,endDate);
         if(startBucket.get(startBucket.size() - 1).before(startDate))
