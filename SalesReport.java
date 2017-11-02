@@ -179,6 +179,23 @@ public class SalesReport
         System.out.println("IN Calendar"+calendar.getTime());
         return calendar.getTime();
     }
+    Date decrementYear(Date date)
+    {
+        Utility dateExtractor = new Utility();
+        dateExtractor.dateHandeler(date.toString());
+        int year = Integer.parseInt(dateExtractor.getAttribute("year"));
+        int month = Utility.getMonth(dateExtractor.getAttribute("month"));
+        int currDate = Integer.parseInt(dateExtractor.getAttribute("date"));
+        int hour = Integer.parseInt(dateExtractor.getAttribute("hour"));
+        int minute = Integer.parseInt(dateExtractor.getAttribute("minute"));
+        int second = Integer.parseInt(dateExtractor.getAttribute("second"));
+        year--;
+        System.out.println("IN DECREMENT YEAR month "+month);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, currDate, hour, minute, second);
+        System.out.println("IN DECREMENT YEAR Calendar"+calendar.getTime());
+        return calendar.getTime();
+    }
     Date decrementDate(Date date,int numOfDays)
     {
         Utility dateExtractor = new Utility();
@@ -263,17 +280,50 @@ public class SalesReport
         Vector<Double> bucket = new Vector<Double>();
         Date date = new Date();
         date.setTime(endDate.getTime());
+        Date a = new Date();
+        Date b = new Date();
         while(date.after(startDate))
         {
-            Date a = getStartOfMonth(date);
-            Date b = getEndOfMonth(date);
+            switch(type)
+            {
+                case 0:
+                    a = getStartOfWeek(date);
+                    b = getEndOfWeek(date);
+                    date = decrementDate(date,7);
+                break;
+                case 1:
+                    a = getStartOfMonth(date);
+                    b = getEndOfMonth(date);
+                    date = decrementMonth(date);
+                break;
+                case 2:
+                    a = getStartOfYear(date);
+                    b = getEndOfYear(date);
+                    date = decrementYear(date);
+                break;
+            }
             startBucket.add(a);
             endBucket.add(b);
-            date = decrementMonth(date);
             System.out.println("In while LOOP" + date);
         }
-        Date a = getStartOfMonth(date);
-        Date b = getEndOfMonth(date);
+        switch(type)
+        {
+            case 0:
+                a = getStartOfWeek(date);
+                b = getEndOfWeek(date);
+                date = decrementDate(date,7);
+            break;
+            case 1:
+                a = getStartOfMonth(date);
+                b = getEndOfMonth(date);
+                date = decrementMonth(date);
+            break;
+            case 2:
+                a = getStartOfYear(date);
+                b = getEndOfYear(date);
+                date = decrementYear(date);
+            break;
+        }
         if(startDate.after(a) && startDate.before(b))
         {
             startBucket.add(a);
